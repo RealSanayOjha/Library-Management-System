@@ -259,12 +259,6 @@ This is a learning project, but contributions are welcome:
 
 This project is created for educational purposes. Feel free to use it for learning, academic projects, or as a foundation for your own applications.
 
-## 👨‍💻 **Author**
-
-**Your Name**
-- GitHub: [@yourusername](https://github.com/yourusername)
-- Email: your.email@example.com
-
 ## 🙏 **Acknowledgments**
 
 - Java documentation and tutorials
