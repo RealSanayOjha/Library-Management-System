@@ -134,8 +134,8 @@ LibraryManagementSystem/
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/yourusername/library-management-system.git
-   cd library-management-system
+   git clone https://github.com/RealSanayOjha/Library-Management-System.git
+   cd Library-Management-System
    ```
 
 2. **Compile the project**
@@ -148,39 +148,237 @@ LibraryManagementSystem/
    java LibraryManagementSystem
    ```
 
-4. **Follow the interactive menu**
+4. **First-time setup (Optional)**
+   - The system will create `data/` and `reports/` directories automatically
+   - You can start with an empty library or add sample data
+
+5. **Sample Data for Testing**
+   
+   **Sample Books to Add:**
+   ```
+   Title: Java: The Complete Reference | Author: Herbert Schildt | ISBN: 9780071808558
+   Title: Effective Java | Author: Joshua Bloch | ISBN: 9780134685991
+   Title: Clean Code | Author: Robert Martin | ISBN: 9780132350884
+   Title: Data Structures and Algorithms | Author: Robert Sedgewick | ISBN: 9780321573513
+   ```
+   
+   **Sample Members to Add:**
+   ```
+   Student: S001 | Alice Johnson | alice@university.edu | Computer Science | Year 2
+   Student: S002 | Bob Smith | bob@university.edu | Mathematics | Year 1
+   Staff: T001 | Dr. Carol Wilson | carol@university.edu | Computer Science | Professor
+   ```
+
+6. **Follow the interactive menu**
    - Use number keys to navigate menus
    - Follow on-screen prompts for data entry
    - Data is automatically saved between sessions
 
-## 🎮 **Usage Examples**
+## 🎮 **Usage Examples & Program Output**
 
-### **Adding a New Book**
+### **Main Menu Interface**
 ```
-Main Menu → 1 (Book Management) → 1 (Add New Book)
-📖 Enter book title: Java Programming
-👨‍💼 Enter author name: James Gosling
-🔢 Enter ISBN: 978-1234567890
-✅ Book added successfully!
+╔══════════════════════════════════════════════════════════╗
+║                 📚 LIBRARY MANAGEMENT SYSTEM             ║
+║                     Welcome to LMS v1.0                 ║
+╠══════════════════════════════════════════════════════════╣
+║                       MAIN MENU                         ║
+║                                                          ║
+║  1. 📚 Book Management                                   ║
+║  2. 👥 Member Management                                 ║
+║  3. 🔄 Borrowing & Returns                               ║
+║  4. 🔍 Search Books                                      ║
+║  5. 📊 Reports                                           ║
+║  6. 📈 Library Status                                    ║
+║  7. 💾 Data Management                                   ║
+║  8. ❌ Exit System                                       ║
+║                                                          ║
+╚══════════════════════════════════════════════════════════╝
+
+Please enter your choice (1-8): 
 ```
 
-### **Adding a New Member**
+### **Adding a New Book - Complete Flow**
+
+**Input Process:**
 ```
-Main Menu → 2 (Member Management) → 1 (Add New Member) → 1 (Student)
-🆔 Enter member ID: S001
+� === ADD NEW BOOK ===
+
+�📖 Enter book title: Java: The Complete Reference
+👨‍💼 Enter author name: Herbert Schildt
+🔢 Enter ISBN (10 or 13 digits): 9780071808558
+```
+
+**System Output:**
+```
+✅ SUCCESS: Book added successfully!
+
+📚 Book Details:
+   📖 Title: Java: The Complete Reference
+   👨‍💼 Author: Herbert Schildt
+   🔢 ISBN: 9780071808558
+   📊 Status: Available
+   📅 Added: 2025-11-09 14:30:15
+
+Press Enter to continue...
+```
+
+### **Adding a New Member - Student Registration**
+
+**Input Process:**
+```
+👥 === MEMBER REGISTRATION ===
+
+Select member type:
+1. 🎓 Student
+2. 👨‍💼 Staff
+
+Enter choice (1-2): 1
+
+🆔 Enter member ID (format: S###): S001
 👤 Enter full name: Alice Johnson
-📧 Enter email address: alice@email.com
-🏫 Enter department: Computer Science
+📧 Enter email address: alice.johnson@university.edu
+📱 Enter phone number: +1-555-0123
+🏫 Enter course/department: Computer Science
 📊 Enter year of study: 2
-✅ Student added successfully!
 ```
 
-### **Borrowing a Book**
+**System Output:**
 ```
-Main Menu → 3 (Borrowing & Returns) → 1 (Borrow Book)
+✅ SUCCESS: Student registered successfully!
+
+👤 Student Details:
+   🆔 ID: S001
+   👤 Name: Alice Johnson
+   📧 Email: alice.johnson@university.edu
+   📱 Phone: +1-555-0123
+   🏫 Course: Computer Science
+   📊 Year: 2
+   📚 Max Books: 2
+   📖 Current Borrowed: 0
+
+Press Enter to continue...
+```
+
+### **Borrowing a Book - Complete Transaction**
+
+**Input Process:**
+```
+🔄 === BORROW BOOK ===
+
 🆔 Enter member ID: S001
-📖 Enter book title: Java Programming
-✅ Book borrowed successfully!
+📖 Enter book title (or partial): Java Complete
+```
+
+**System Output:**
+```
+🔍 Searching for books matching "Java Complete"...
+
+📚 Found matching books:
+1. Java: The Complete Reference by Herbert Schildt [Available]
+
+Select book (1-1): 1
+
+✅ SUCCESS: Book borrowed successfully!
+
+📋 Transaction Details:
+   🆔 Member: S001 - Alice Johnson
+   📖 Book: Java: The Complete Reference
+   👨‍💼 Author: Herbert Schildt
+   📅 Borrowed: 2025-11-09 14:35:22
+   📚 Member's Books: 1/2
+   🔢 Transaction ID: TXN001
+
+📧 Reminder: Please return within 14 days to avoid fines.
+
+Press Enter to continue...
+```
+
+### **Library Status Report Output**
+
+```
+╔══════════════════════════════════════════════════════════╗
+║                    📊 LIBRARY STATUS                     ║
+╠══════════════════════════════════════════════════════════╣
+║  📚 Total Books: 25                                      ║
+║  📖 Available Books: 20                                  ║
+║  🔒 Borrowed Books: 5                                    ║
+║                                                          ║
+║  👥 Total Members: 12                                    ║
+║  🎓 Students: 8                                          ║
+║  👨‍💼 Staff: 4                                            ║
+║                                                          ║
+║  🔄 Total Transactions: 15                               ║
+║  📈 Books Borrowed Today: 3                              ║
+║  📉 Books Returned Today: 1                              ║
+║                                                          ║
+║  💾 Last Data Save: 2025-11-09 14:40:15                 ║
+╚══════════════════════════════════════════════════════════╝
+
+Press Enter to continue...
+```
+
+### **Search Books Output**
+
+**Input:**
+```
+🔍 === SEARCH BOOKS ===
+
+Enter search term (title or author): java
+```
+
+**Output:**
+```
+🔍 Search Results for "java":
+
+📚 Found 3 matching books:
+
+┌─────┬─────────────────────────────────┬──────────────────┬─────────────┬───────────┐
+│ No. │             Title               │      Author      │    ISBN     │  Status   │
+├─────┼─────────────────────────────────┼──────────────────┼─────────────┼───────────┤
+│  1  │ Java: The Complete Reference    │ Herbert Schildt  │ 97800718... │ Borrowed  │
+│  2  │ Effective Java                  │ Joshua Bloch     │ 97801346... │ Available │
+│  3  │ Java Programming Fundamentals   │ James Gosling    │ 97801234... │ Available │
+└─────┴─────────────────────────────────┴──────────────────┴─────────────┴───────────┘
+
+📊 Search Statistics:
+   🔍 Total matches: 3
+   📖 Available: 2
+   🔒 Borrowed: 1
+
+Press Enter to continue...
+```
+
+### **Error Handling Examples**
+
+**Maximum Books Exceeded:**
+```
+❌ ERROR: Maximum books limit exceeded!
+
+📋 Details:
+   🆔 Member: S001 - Alice Johnson
+   📚 Current borrowed books: 2/2
+   📖 Requested book: Effective Java
+
+💡 Suggestion: Please return at least 1 book to borrow new ones.
+
+Available actions:
+1. 📋 View borrowed books
+2. 🔄 Return a book
+3. ⬅️ Go back to main menu
+
+Enter choice (1-3): 
+```
+
+**Invalid Input Example:**
+```
+❌ VALIDATION ERROR: Invalid email format!
+
+📧 Entered: alice@invalid
+✅ Expected format: user@domain.com
+
+Please enter a valid email address: alice.johnson@university.edu
+✅ Email validated successfully!
 ```
 
 ## 🧪 **Testing the System**
@@ -261,9 +459,9 @@ This project is created for educational purposes. Feel free to use it for learni
 
 ## 👨‍💻 **Author**
 
-**Your Name**
-- GitHub: [@yourusername](https://github.com/yourusername)
-- Email: your.email@example.com
+**Sanay Ojha**
+- GitHub: [@RealSanayOjha](https://github.com/RealSanayOjha)
+- Repository: [Library-Management-System](https://github.com/RealSanayOjha/Library-Management-System)
 
 ## 🙏 **Acknowledgments**
 
